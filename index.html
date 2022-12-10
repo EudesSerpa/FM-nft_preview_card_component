@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | NFT preview card component</title>
+
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main>
+    <article class="card">
+      <figure class="card__container">
+        <a href="#">
+          <picture class="card__image-container">
+            <img class="card__image" src="./images/image-equilibrium.jpg" alt="Equilibrium #3429">
+          </picture>
+        </a>
+
+        <figcaption class="card__details">
+          <header>
+            <h1 class="card__title text--bold">
+              <a href="#">Equilibrium #3429</a>
+            </h1>
+          </header>
+
+          <p class="card__text">
+            Our Equilibrium collection promotes balance and calm.
+          </p>
+
+          <div class="card__prices flex-group">
+            <p class="card__icon text--bold" data-icon="ethereum">0.041 ETH</p>
+            <p class="card__icon" data-icon="clock">3 days left</p>
+          </div>
+
+          <footer class="flex-group card__footer">
+            <img class="card__author-avatar avatar--rounded" src="./images/image-avatar.png" alt="Jules Wyvern">
+            <p>Creation of <a href="#" class="card__author-name">Jules Wyvern</a></p>
+          </footer>
+        </figcaption>
+      </figure>
+    </article>
+  </main>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://www.linkedin.com/in/eudes-serpa/">Eudes Serpa</a>.
+  </footer>
+</body>
+</html>

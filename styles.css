@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+  /* Colors */
+  /* Primary */
+  --soft-blue: hsl(215, 51%, 70%);
+  --cyan: hsl(178, 100%, 50%);
+  
+  /* Neutral */
+  --very-dark-blue-mainBG: hsl(217, 54%, 11%);
+  --very-dark-blue-mainShadow: hsl(217, 54%, 10%);
+  --very-dark-blue-cardBG: hsl(216, 50%, 16%);
+  --very-dark-blue-line: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+
+  /* Typography */
+  --fs-base: 1.125rem; /* 18px */
+
+  --fw-bold: 600;
+  --fw-regular: 400;
+  --fw-light: 300;
+  --ff-main: 'Outfit', sans-serif;
+
+  /* Border */
+  --bdr-radius: 1rem;
+}
+
+/* Code from: https://www.joshwcomeau.com/css/custom-css-reset/ */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+}
+
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* General styles */
+body {
+  display: grid;
+  place-content: center;
+  margin: 1rem;
+  font: var(--fw-regular) var(--fs-base) var(--ff-main);
+  color: var(--soft-blue);
+  background-color: var(--very-dark-blue-mainBG);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Utilities */
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.flex-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar--rounded {
+  border-radius: 50%;
+  border: .0625rem solid var(--white);
+}
+
+.text--bold {
+  font-weight: var(--fw-bold);
+}
+
+/* Card */
+.card {
+  position: relative;
+  --content-spacing: .9rem;
+  
+  width: min(330px, 100%);
+  margin-inline: auto;
+  padding: 1.5rem;
+  border-radius: var(--bdr-radius);
+  font-size: 1rem;
+  background-color: var(--very-dark-blue-cardBG);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: 5%;
+  width: 110%;
+  height: 105%;
+  background-color: var(--very-dark-blue-mainShadow);
+  border-radius: var(--bdr-radius) var(--bdr-radius) 4.5rem 4.5rem;
+  opacity: .5;
+  z-index: -1;
+}
+
+.card__container,
+.card__details {
+  display: grid;
+  gap: var(--content-spacing);
+}
+
+.card__image-container {
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  border-radius: calc(var(--bdr-radius) / 2);
+  overflow: hidden;
+}
+
+.card__image-container > *,
+.card__image-container::before,
+.card__image-container::after{
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+}
+
+.card__image-container::before,
+.card__image-container::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: background-color .3s ease-in-out, opacity .3s ease-in-out;
+}
+
+.card__image-container:is(:hover, :focus-visible)::before {
+  background-color: var(--cyan);
+  opacity: .5;
+}
+.card__image-container:is(:hover, :focus-visible)::after {
+  background: no-repeat center / 3.5rem url(./images/icon-view.svg);
+}
+
+.card__title {
+  margin-block-start: .6rem;
+  color: var(--white);
+}
+
+.card__title > a:is(:hover, :focus-visible),
+.card__author-name:is(:hover, :focus-visible) {
+  color: var(--cyan);
+}
+
+.card__text,
+.card__footer {
+  font-weight: var(--fw-light);
+}
+
+.card__text {
+  line-height: 1.6;
+}
+
+.card__prices {
+  justify-content: space-between;
+  font-size: .95rem;
+}
+
+.card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.card__icon[data-icon="ethereum"] {
+  color: var(--cyan);
+}
+
+.card__icon[data-icon="ethereum"]::before {
+  content: "";
+  width: 11px;
+  height: 18px;
+  background-image: url(./images/icon-ethereum.svg);
+}
+
+.card__icon[data-icon="clock"]::before {
+  content: "";
+  width: 17px;
+  height: 17px;
+  background-image: url(./images/icon-clock.svg);
+}
+
+.card__footer {
+  padding-block-start: var(--content-spacing);
+  border-top: .0625rem solid var(--very-dark-blue-line);
+}
+
+.card__author-avatar {
+  width: 2.2rem;
+  aspect-ratio: 1;
+}
+
+.card__author-name {
+  color: var(--white);
+}
+
+
+/* Attribution */
+.attribution {
+  margin-block: 1rem;
+  font-size: .9rem;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
