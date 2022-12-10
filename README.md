@@ -30,7 +30,7 @@ Users should be able to:
 ### Links
 
 - Repository URL: [Github](https://github.com/EudesSerpa/FM-nft_preview_card_component).
-- Live Site URL: [See demo](https://your-live-site-url.com).
+- Live Site URL: [See demo](https://fm-ntf-card.netlify.app/).
 
 ## My process
 
